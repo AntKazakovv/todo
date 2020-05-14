@@ -1,9 +1,9 @@
 <template>
     <div>
         <div id="control_panel">
-            <div id="create-note-but-wraper">
+            <router-link to="/edit" tag="div" id="create-note-but-wraper">
                 <font-awesome-icon id="create-note-but" icon="plus" />
-            </div>
+            </router-link>
         </div>
         <router-link to="/" tag="div" class="note-item"  v-for="noteItem in $store.state.listNotes">
             <h2>{{noteItem.title}}</h2>

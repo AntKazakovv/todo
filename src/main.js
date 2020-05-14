@@ -5,10 +5,10 @@ import routes from './routes'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { faUserSecret, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faPlus, faTrash, faSave } from '@fortawesome/free-solid-svg-icons'
 
 
-library.add(faUserSecret, faPlus)
+library.add(faUserSecret, faPlus, faTrash, faSave)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

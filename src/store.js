@@ -12,11 +12,11 @@ export const store = new Vuex.Store({
         listItems: [
           {
             task: 'daawd awdwadawd awdawdawd awdawdaw awdwad',
-            isCompleted: false
+            isDone: false
           },
           {
             task: 'fsefgl lkwjd dvnwdj wadkawkk dnvnvee',
-            isCompleted: false
+            isDone: false
           },
         ]
       },
@@ -38,6 +38,10 @@ export const store = new Vuex.Store({
     ]
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    createNote: function(){
+      //допилить сохраниение заметки
+    }
+  },
   actions: {},
 });
