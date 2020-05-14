@@ -1,6 +1,11 @@
 <template>
     <div>
-        <router-link to="/" tag="div" class="note-item"  v-for="noteItem in tempListNotes">
+        <div id="control_panel">
+            <div id="create-note-but-wraper">
+                <font-awesome-icon id="create-note-but" icon="plus" />
+            </div>
+        </div>
+        <router-link to="/" tag="div" class="note-item"  v-for="noteItem in $store.state.listNotes">
             <h2>{{noteItem.title}}</h2>
             <ul>
                 <li>{{noteItem.listItems[0].task}}</li>
@@ -15,37 +20,7 @@ export default {
     // Временная структура данных для заметок
     data(){
         return {
-            tempListNotes: [
-                {
-                    title: 'Test Note 1',
-                    date: '02.04.20',
-                    listItems: [
-                        {
-                            task: 'daawd awdwadawd awdawdawd awdawdaw awdwad',
-                            isCompleted: false
-                        },
-                        {
-                            task: 'fsefgl lkwjd dvnwdj wadkawkk dnvnvee',
-                            isCompleted: false
-                        },
-                    ]
-                },
-                {
-                    title: 'Test Note 2',
-                    date: '02.04.20',
-                    listItems: [
-                        {
-                            task: 'daawd awdwadawd awdawdawd awdawdaw awdwad',
-                            isCompleted: false
-                        },
-                        {
-                            task: 'fsefgl lkwjd dvnwdj wadkawkk dnvnvee',
-                            isCompleted: false
-                        },
-                    ]
-                },
-
-            ]
+            
         }
     }
 
@@ -55,11 +30,23 @@ export default {
 <style lang="sass">
     .note-item
         padding: 13px
-        border-bottom: 2px solid white
+        border-top: 2px solid white
 
         &:hover
             background: #f79797
     
     ul
         padding-left: 20px
+
+    #control_panel
+        display: flex
+
+    #create-note-but
+
+    #create-note-but-wraper
+        font-size: 2.4em
+        padding: 10px
+
+
+
 </style>
