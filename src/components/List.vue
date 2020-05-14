@@ -1,10 +1,11 @@
 <template>
     <div>
-        <router-link to="/" tag="div" class="note-item"  v-for="noteItem in tempListNotes">
+        <router-link to="/" tag="div" class="note-item"  v-for="noteItem in $store.state.listNotes">
             <h2>{{noteItem.title}}</h2>
             <ul>
                 <li>{{noteItem.listItems[0].task}}</li>
                 <li>{{noteItem.listItems[1].task}}</li>
+                <li>...</li>
             </ul>
         </router-link>
     </div>
@@ -15,37 +16,7 @@ export default {
     // Временная структура данных для заметок
     data(){
         return {
-            tempListNotes: [
-                {
-                    title: 'Test Note 1',
-                    date: '02.04.20',
-                    listItems: [
-                        {
-                            task: 'daawd awdwadawd awdawdawd awdawdaw awdwad',
-                            isCompleted: false
-                        },
-                        {
-                            task: 'fsefgl lkwjd dvnwdj wadkawkk dnvnvee',
-                            isCompleted: false
-                        },
-                    ]
-                },
-                {
-                    title: 'Test Note 2',
-                    date: '02.04.20',
-                    listItems: [
-                        {
-                            task: 'daawd awdwadawd awdawdawd awdawdaw awdwad',
-                            isCompleted: false
-                        },
-                        {
-                            task: 'fsefgl lkwjd dvnwdj wadkawkk dnvnvee',
-                            isCompleted: false
-                        },
-                    ]
-                },
-
-            ]
+            
         }
     }
 
