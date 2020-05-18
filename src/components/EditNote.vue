@@ -38,7 +38,13 @@ export default {
             this.$delete(this.listNewItems, index)
         },
         save(){
-
+            let payload = {
+                title: this.title,
+                listItems: this.listNewItems,
+                date: new Date()
+            } 
+            this.$store.commit('createNote', payload)
+            this.$router.replace('/')
         },
         test(){
             console.log(this.listNewItems)
@@ -61,5 +67,8 @@ export default {
     .edit-button
         font-size: 1.5em
         padding: 10px
+    
+    #inp-title
+        background-color: #ee4e56
 
 </style>

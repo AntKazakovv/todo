@@ -7,16 +7,24 @@
       </div>
     </div>
     <div id="left-col"></div>
+
+    <popup />
   </div>
 </template>
 
 <script>
+
+import Popup from './components/Popup'
+
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components: {
+    'popup': Popup
   }
 }
 </script>
@@ -30,7 +38,7 @@ export default {
     margin: 0px
     padding: 0px
     font-family: Arial
-    color: white
+    // color: white
     // background-color: $backColor
   
   #app

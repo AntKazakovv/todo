@@ -39,8 +39,13 @@ export const store = new Vuex.Store({
   },
   getters: {},
   mutations: {
-    createNote: function(){
-      //допилить сохраниение заметки
+    createNote(state, newNote){
+      state.listNotes.push(newNote)
+    },
+    deleteNote(state, delPack){
+      let deleteFunc = pack[1]
+      let indexArray = pack[0]
+      deleteFunc(state.listNotes, indexArray)
     }
   },
   actions: {},
