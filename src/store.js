@@ -5,6 +5,10 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
+    popup: {
+      msg: '',
+      show: false
+    },
     listNotes: [
       {
         title: 'Test Note 1',
@@ -43,9 +47,18 @@ export const store = new Vuex.Store({
       state.listNotes.push(newNote)
     },
     deleteNote(state, delPack){
-      let deleteFunc = pack[1]
-      let indexArray = pack[0]
+      let deleteFunc = delPack[1]
+      let indexArray = delPack[0]
       deleteFunc(state.listNotes, indexArray)
+    },
+    showPopup(state, message){
+      state.popup.msg = message
+      state.popup.show = true
+      // setInterval(()=>{state.popup.show = false}, 500)
+    },
+    hidePopup(state){
+      state.popup.msg = ''
+      state.popup.show = false
     }
   },
   actions: {},

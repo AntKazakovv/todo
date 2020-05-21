@@ -5,7 +5,12 @@
         <font-awesome-icon id="create-note-but" icon="plus" />
       </router-link>
     </div>
-    <router-link to="/" tag="div" class="note-item" v-for="(noteItem, index) in $store.state.listNotes">
+    <router-link
+      to="/"
+      tag="div"
+      class="note-item"
+      v-for="(noteItem, index) in $store.state.listNotes"
+    >
       <div class="preview">
         <h2>{{noteItem.title}}</h2>
         <ul>
@@ -14,75 +19,114 @@
           <li v-if="noteItem.listItems[1] != undefined">...</li>
         </ul>
       </div>
-      <div class="delete-but-wrapper" @click="deleteNote(index)">
-          <font-awesome-icon class="delete-note-but"  icon="trash-alt" />
+      <div class="delete-but-wrapper" @click="generateDeleteNoteFunc(index)">
+        <font-awesome-icon class="delete-note-but" icon="trash-alt" />
       </div>
     </router-link>
+    <popup v-bind:callb="deleteNoteFunc" />
   </div>
 </template>
 
 <script>
+import Popup from "./Popup";
+
 export default {
   // Временная структура данных для заметок
   data() {
-    return {};
+    return {
+      deleteNoteFunc: null
+    };
   },
-  methods:{
-      deleteNote(index){
-          this.$store.commit('deleteNote', [index, this.$delete])
-      }
+  methods: {
+    //функция генерирует функцию для удаления заметки по индексу
+    generateDeleteNoteFunc(index) {
+      const messagePopup = "Вы действительно хотите удалить заметку?";
+      this.deleteNoteFunc = () => {
+        this.$store.commit("deleteNote", [index, this.$delete]);
+      };
+      this.$store.commit("showPopup", messagePopup);
+    }
+  },
+  components: {
+    popup: Popup
   }
 };
 </script>
 
 <style lang="sass">
 
-    $colorHoverPrew: #f79797
-    $colorDeleteBut: #d94a51
-    $colorFont: white
+$colorHoverPrew: #d94a51
+$colorDeleteBut: #d94a51
+$colorFont: white
 
-    .note-item
+.note-item
 
-        border-top: 3px solid #d94a51
-        display: grid
-        grid-template-columns: 1fr 70px
+  border-top: 3px solid #d94a51
+  display: grid
+  grid-template-columns: 1fr 70px
 
-    .preview
-        padding: 13px
-        color: $colorFont
-        &:hover
-            background: $colorHoverPrew
+.preview
+  padding: 13px
+  color: $colorFont
 
-    ul
-        padding-left: 20px
+  &:hover
+    background: $colorHoverPrew
+    cursor: pointer
 
-    #control_panel
-        display: flex
+ul
+  padding-left: 20px
 
-    #create-note-but
-        color: $colorFont
+h2
+  font-size: 2em
+  padding: 6px
+  background: #dd3840
+  border-radius: 8px
 
-    #create-note-but-wraper
-        font-size: 2.4em
-        padding: 10px
+li
+  font-size: 1.4em
+  background: #a04444
+  margin: 4px 0px
+  border-radius: 6px
+  list-style-type: none
+  padding: 1px 10px
 
-    .delete-note-but
-        font-size: 2.4em  
+#control_panel
+  display: flex
 
-    .delete-but-wrapper 
-        padding: 13px
-        justify-content: center
-        align-content: center
-        display: flex
-        padding-top: calc(50% - 5px)
-        color: $colorDeleteBut
+#create-note-but
+  color: $colorFont
 
-        &:hover
-            background: red
-            color: white  !important           
-        &:visited
-            background: red
-            color: white
-    
+#create-note-but-wraper
+  font-size: 2.4em
+  padding: 8px 15px
+  margin-bottom: 6px
+  cursor: pointer
 
+  &:hover
+    background: #953434
+    border-radius: 36px
+  
+  // &:active
+  //   background: red
+
+
+.delete-note-but
+  font-size: 2.4em
+
+.delete-but-wrapper
+
+  padding: 13px
+  justify-content: center
+  align-content: center
+  display: flex
+  padding-top: calc(50% - -30px)
+  color: #e8dfdf
+  cursor: pointer
+
+  &:hover
+    background: #823e3e
+    color: white  !important
+  &:visited
+    background: red
+    color: white
 </style>

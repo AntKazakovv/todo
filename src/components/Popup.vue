@@ -1,20 +1,24 @@
 <template>
-    <div id="popup" v-if="true">
+    <div id="popup" v-if="$store.state.popup.show">
 		<div id="msg-wrapper">
-			<div id="popup-msg">{{msg}}</div>
+			<div id="popup-msg">{{$store.state.popup.msg}}</div>
 		</div>
         <div id="dialog-wrapper">
-			<div class="but-yes button">Да</div>
-			<div class="but-no button">Нет</div>
+			<div class="but-yes button" @click="allow(true)">Да</div>
+			<div class="but-no button" @click="allow(false)">Нет</div>
 		</div>
     </div>
 </template>
 
 <script>
 export default {
-    data(){
-		return {
-			msg: "test message"
+	props: ['callb'],
+	methods: {
+		allow(answer){
+			if(answer){
+				this.callb()
+			}
+			this.$store.commit('hidePopup')
 		}
 	}
 }
@@ -43,18 +47,24 @@ export default {
 	color: #333131;
 	width: 342px;
     font-weight: 600;
+	text-align: center;
 }
 
-.but-yes{
-	
+
+
+.button {
+	padding: 7px 34px;
+	background-color: #978888;
+	margin: 3px 10px;
+	color: white;
+	border-radius: 6px;
+	font-size: 1.6em;
+	margin-bottom: 11px;
+	font-weight: 400;
 }
 
-.but-no{
-
-}
-
-.button{
-	padding: 0px 0px;
+.button:active{
+	background-color: #7b6464;
 }
 
 #msg-wrapper{

@@ -8,13 +8,13 @@
     </div>
     <div id="left-col"></div>
 
-    <popup />
+
   </div>
 </template>
 
 <script>
 
-import Popup from './components/Popup'
+
 
 export default {
   name: 'app',
@@ -23,9 +23,7 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  components: {
-    'popup': Popup
-  }
+
 }
 </script>
 
@@ -43,7 +41,7 @@ export default {
   
   #app
     display: grid
-    grid-template-columns: 1fr 500px 1fr
+    grid-template-columns: 1fr 700px 1fr
     background-color: $backColor
     height: 51vw
 
