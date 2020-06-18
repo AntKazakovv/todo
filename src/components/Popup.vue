@@ -3,9 +3,12 @@
 		<div id="msg-wrapper">
 			<div id="popup-msg">{{$store.state.popup.msg}}</div>
 		</div>
-        <div id="dialog-wrapper">
+        <div id="dialog-wrapper" v-if="callb != undefined">
 			<div class="but-yes button" @click="allow(true)">Да</div>
 			<div class="but-no button" @click="allow(false)">Нет</div>
+		</div>
+		<div id="dialog-wrapper" v-else>
+			<div class="button" @click="allow(false)">Ok</div>
 		</div>
     </div>
 </template>

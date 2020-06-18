@@ -6,7 +6,7 @@
       </router-link>
     </div>
     <router-link
-      to="/"
+      :to=" `/edit/${index}` "
       tag="div"
       class="note-item"
       v-for="(noteItem, index) in $store.state.listNotes"

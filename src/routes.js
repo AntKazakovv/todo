@@ -14,6 +14,11 @@ export default new Router({
         },
         {
             path: '/edit',
+            name: 'createNote',
+            component: EditNote
+        },
+        {
+            path: '/edit/:id',
             name: 'editNote',
             component: EditNote
         }

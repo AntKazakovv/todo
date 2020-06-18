@@ -59,6 +59,12 @@ export const store = new Vuex.Store({
     hidePopup(state){
       state.popup.msg = ''
       state.popup.show = false
+    },
+    editNote(state, updated){
+      let [title, actualItems, id] = updated
+      // console.log(state.listNotes)
+      state.listNotes[id].title = title
+      state.listNotes[id].listItems = actualItems
     }
   },
   actions: {},
